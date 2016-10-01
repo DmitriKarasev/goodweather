@@ -4,7 +4,13 @@ import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.goodweather.Class.HttpQuery;
 import com.example.goodweather.Class.StubLoader;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             //получить данные если грузится первый раз
+        }
+
+        try {
+            JSONObject object = HttpQuery.Get("https://yandex.ru/pogoda/innopolis");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
